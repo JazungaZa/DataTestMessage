@@ -1,5 +1,6 @@
 package com.example.datatest
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
@@ -33,8 +34,35 @@ class MainActivity : AppCompatActivity() {
         showDialog = findViewById(R.id.buttonYear)
         showSnackBar = findViewById(R.id.buttonSend)
 
+        showDialog.setOnClickListener {
+            showAlertDialog()
+        }
 
 
+
+
+    }
+    fun showAlertDialog(){
+
+        AlertDialog.Builder(this@MainActivity)
+            .setTitle("Add a year")
+            .setMessage("Do you want to add a year?")
+            .setCancelable(false)
+            .setNegativeButton("No", DialogInterface.OnClickListener { dialog, which ->
+                dialog.dismiss()
+            })
+            .setPositiveButton("Yes", DialogInterface.OnClickListener { dialog, which ->
+                var num = age.text.toString().toIntOrNull()
+                if(num != null){
+                    num = num + 1
+
+                }
+                else{
+                    num = 0
+                }
+                age.text = num.toString()
+            })
+            .create().show()
 
     }
 }
