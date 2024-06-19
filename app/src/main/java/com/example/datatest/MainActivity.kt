@@ -2,14 +2,17 @@ package com.example.datatest
 
 import android.content.DialogInterface
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var age : TextView
     lateinit var showDialog: Button
     lateinit var showSnackBar : Button
+    lateinit var layout : ConstraintLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,9 +37,13 @@ class MainActivity : AppCompatActivity() {
         age = findViewById(R.id.Age)
         showDialog = findViewById(R.id.buttonYear)
         showSnackBar = findViewById(R.id.buttonSend)
+        layout = findViewById(R.id.main)
 
         showDialog.setOnClickListener {
             showAlertDialog()
+        }
+        showSnackBar.setOnClickListener {
+            showSnackBarFun()
         }
 
 
@@ -64,5 +72,11 @@ class MainActivity : AppCompatActivity() {
             })
             .create().show()
 
+    }
+    fun showSnackBarFun(){
+        Snackbar.make(layout, "Your password is: ${pass.text.toString()}", Snackbar.LENGTH_INDEFINITE)
+            .setAction("Close", View.OnClickListener {
+
+            }).show()
     }
 }
