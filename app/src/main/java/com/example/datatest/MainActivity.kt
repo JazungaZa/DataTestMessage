@@ -1,12 +1,23 @@
 package com.example.datatest
 
 import android.os.Bundle
+import android.widget.Button
+import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class MainActivity : AppCompatActivity() {
+
+    lateinit var email : TextView
+    lateinit var pass : TextView
+    lateinit var age : TextView
+    lateinit var showDialog: Button
+    lateinit var showSnackBar : Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -16,5 +27,14 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        email = findViewById(R.id.email)
+        pass = findViewById(R.id.password)
+        age = findViewById(R.id.Age)
+        showDialog = findViewById(R.id.buttonYear)
+        showSnackBar = findViewById(R.id.buttonSend)
+
+
+
+
     }
 }
